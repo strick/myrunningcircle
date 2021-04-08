@@ -3,6 +3,6 @@ FROM node:12.18.1-alpine
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install --only=production
-COPY ./app.js ./app.js
-COPY ./public ./public
+COPY ./src/app.js ./src/app.js
+COPY ./src/public ./src/public
 CMD npm start
