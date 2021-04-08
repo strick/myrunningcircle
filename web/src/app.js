@@ -1,7 +1,7 @@
 const express = require('express');
 var app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 app.use(express.static(__dirname + '/public'));
 
@@ -12,5 +12,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Microservice listening on port ${port}, point your browser at http://localhost:3001`);
+    console.log(`Microservice listening on port ${port}, point your browser at http://localhost:${port}`);
 });
