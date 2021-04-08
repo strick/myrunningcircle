@@ -1,8 +1,8 @@
-const http = require('http');
+const express = require('express');
+var app = express();
 
-var server = http.createServer(function (request, response) {
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello World\n");
+app.get('/', (req, res) => {
+    res.send('Hello Express')
 });
 
-server.listen(4000);
+app.listen(process.env.PORT || 3000)
