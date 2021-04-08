@@ -1,14 +1,26 @@
 version: '3'
 services:
+    
+    web:
+        image: web
+        build: 
+            context: ./web
+            dockerfile: Dockerfile
+        container_name: web
+        ports:
+            - "3001:80"    
+        environment:
+            - PORT=80
+        restart: "no"
 
-  web:
-    image: web
-    build: 
-      context: ./web
-      dockerfile: Dockerfile
-    container_name: web
-    ports:
-     - "3001:80"
-    environment:
-      - PORT=80
-    restart: "no"
+    feed-reader:
+        image: feed-reader
+        build: 
+            context: ./feed-reader
+            dockerfile: Dockerfile
+        container_name: feed-reader
+        ports:
+            - "3000:80"    
+        environment:
+            - PORT=80
+        restart: "no"
