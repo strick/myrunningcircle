@@ -33,4 +33,6 @@ services:
             - PORT=80
             - DBHOST=mongodb://db:27017
             - DBNAME=feeds
+        depends_on:
+            - db
         restart: "no"
