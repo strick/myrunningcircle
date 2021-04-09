@@ -4,16 +4,10 @@ var app = express();
 
 const port = process.env.PORT || 3001;
 
-//app.use(express.static(__dirname + '/public'));
-
-//app.get('/', (req, res) => {
-// res.render('index')
-//});
-
 app.set('view engine', 'ejs');
 
-var indexRouter = require('./routes/index-route.js');
-app.use('/', indexRouter);
+const router = require('./routes/routes.js');
+app.use("", router);
 
 app.listen(port, () => {
     console.log(`Microservice listening on port ${port}, point your browser at http://localhost:${port}`);
