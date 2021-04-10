@@ -2,14 +2,19 @@
     "name": "myrunningcircle-feed-reader",
     "version": "1.0.0",
     "description": "",
-    "main": "./src/app.js",
+    "main": "./app.js",
     "scripts": {
-        "start": "node ./src/app.js"
+        "start": "node ./app.js",
+        "start-dev": "nodemon ./app.js"
     },
     "keywords": [],
     "author": "Brian Strickland",
     "license": "Apache-2.0",
     "dependencies": {
-        "express": "^4.17.1"
+        "express": "^4.17.1",
+        "mongodb": "^3.6.6"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.7"
     }
 }

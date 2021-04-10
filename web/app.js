@@ -1,15 +1,13 @@
 const express = require('express');
+const ejs = require('ejs');
 var app = express();
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 
-app.use(express.static(__dirname + '/public'));
+app.set('view engine', 'ejs');
 
-console.log("hello");
-
-app.get('/', (req, res) => {
-    res.send(`Hello Express on port:${port}`)
-});
+const router = require('./routes/routes.js');
+app.use("", router);
 
 app.listen(port, () => {
     console.log(`Microservice listening on port ${port}, point your browser at http://localhost:${port}`);

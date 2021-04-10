@@ -3,6 +3,8 @@ FROM node:12.18.1-alpine
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install --only=production
-COPY ./src/app.js ./src/app.js
-COPY ./src/public ./src/public
+COPY ./app.js ./
+COPY ./controllers ./controllers
+COPY ./routes ./routes
+COPY ./views ./views
 CMD npm start
