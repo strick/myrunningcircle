@@ -13,34 +13,15 @@ module.exports=
         
         //console.log(FEED_HOST + ":" + FEED_PORT + "/get");
         api_helper.make_API_call("http://" + FEED_HOST + ":" + FEED_PORT + "/get").then(response => {
-            res.json(response);
+            //res.json(response);
+            res.render("feed", {
+                name: "Brian",
+                runs: response
+            })
         })
         .catch(error => {
             res.send(error);
         });
         
     }
-
-/*
-        // Forward the request to the feed-reader to get the content
-        const forwardRequest = http.request (
-            {
-                host: FEED_HOST,
-                port: FEED_PORT,
-                path:'/get',
-                method:'GET',
-                headers: req.headers
-            },
-            forwardResponse => {
-                res.writeHeader(forwardResponse.statusCode, forwardResponse.headers);
-                forwardResponse.pipe(res);
-            }
-        );
-
-        let x = req.pipe(forwardRequest);
-       // console.log(x);
-        
-        //res.render("feed");
-*/
- 
 }
