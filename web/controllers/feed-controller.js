@@ -9,14 +9,12 @@ module.exports=
     feed:function(req, res) {
         console.log("In Feed");
 
-        //res.render('feed');
-
         // Forward the request to the feed-reader to get the content
         const forwardRequest = http.request (
             {
                 host: FEED_HOST,
                 port: FEED_PORT,
-                path:'/feed/get',
+                path:'/get',
                 method:'GET',
                 headers: req.headers
             },
@@ -26,7 +24,6 @@ module.exports=
             }
         );
 
-        
         req.pipe(forwardRequest);
 
     }   

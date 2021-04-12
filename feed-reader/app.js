@@ -13,7 +13,7 @@ if (!process.env.DBNAME) {
 
 const port = process.env.PORT || 3000;
 
-app.get("/feed/get", (req, res) => {
+app.get("/get", (req, res) => {
     console.log("HERE");
 })
 
