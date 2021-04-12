@@ -20,7 +20,7 @@ services:
         environment:
             - PORT=80
             - FEED_HOST=feed-reader
-            - FEED_PORT=4001
+            - FEED_PORT=80
         restart: "no"
 
     feed-reader:
