@@ -1,12 +1,26 @@
+const FEED_HOST = process.env.FEED_HOST;
+const FEED_PORT = parseInt(process.env.FEED_PORT);
+
 module.exports=
 {
     feed:function(req, res) {
         //res.render('feed');
 
         // Forward the request to the feed-reader to get the content
-        conts forwardRequest = http.request {
-            
-        }
+        const forwardRequest = http.request (
+            {
+                host: FEED_HOST,
+                port: FEED_PORT,
+                path:'/feed/get',
+                method:'GET',
+                headers: req.headers
+            },
+            forwardResponse => {
+                res.writeHeaser(forwardResponse.statusCode, forwardResponse.headers);
+                res.forwardResponse.pipe(res);
+            }
+        );
+
 
     }   
 }
