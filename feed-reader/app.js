@@ -13,6 +13,10 @@ if (!process.env.DBNAME) {
 
 const port = process.env.PORT || 3000;
 
+app.get("/feed/get", (req, res) => {
+    console.log("HERE");
+})
+
 app.listen(port, () => {
     console.log(`Feed Reader is listening on port ${port}, point your browser at http://localhost:3001`);
 });
