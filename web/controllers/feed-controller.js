@@ -20,7 +20,7 @@ module.exports=
             },
             forwardResponse => {
                 res.writeHeader(forwardResponse.statusCode, forwardResponse.headers);
-                res.forwardResponse.pipe(res);
+                forwardResponse.pipe(res);
             }
         );
 
