@@ -8,7 +8,7 @@ module.exports=
    
     feed:function(req, res) {
         console.log("In Feed");
-
+/*
         // Forward the request to the feed-reader to get the content
         const forwardRequest = http.request (
             {
@@ -28,6 +28,6 @@ module.exports=
        // console.log(x);
         
         //res.render("feed");
-
+*/
     }   
 }
