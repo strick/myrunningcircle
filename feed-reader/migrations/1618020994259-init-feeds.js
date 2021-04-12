@@ -12,15 +12,18 @@ module.exports.up = next => {
   // make client connect to mongo service
   return MongoClient.connect(url)
     .then(client => {
+      
       let db = client.db();
-      console.log("Switched to "+db.databaseName+" database");
+
+      console.log("Switched to "+db.databaseName+" database");      
       db.createCollection("running-feed");
+      
       return client;
+
     })
     .then(client => {
          
           console.log("Collection is created!");
-          // close the connection to db when you are done with it
           client.close();
 
           // Gives:   warning : if your migration returns a promise, do not call the done callback
@@ -37,20 +40,24 @@ module.exports.down = next => {
   // make client connect to mongo service
   return MongoClient.connect(url)
     .then(client => {
-      return client.db();
-    })
-    .then(db => {
+      
+      let db = client.db();
 
       // db pointing to newdb
       console.log("Switched to "+db.databaseName+" database");
+
       // create 'users' collection in newdb database
-      return db.dropCollection("running-feed");
+      db.dropCollection("running-feed");
+
+      return client;
 
     })
-    .then(() => {
+    .then(client => {
       console.log("Collection is Deleted!");
       client.close();
-      return next();  // Must have this for migations
+      //return next();  // Must have this for migations
     })
-  .catch(err => next(err));
+    .catch(err => {
+      console.error(err);
+    });
 }
