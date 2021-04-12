@@ -1,9 +1,9 @@
 {
-  "lastRun": null,
+  "lastRun": "1618020994259-init-feeds.js",
   "migrations": [
     {
       "title": "1618020994259-init-feeds.js",
-      "timestamp": null
+      "timestamp": 1618197378569
     }
   ]
 }

@@ -5,25 +5,30 @@ var url = "mongodb://localhost:4000/feeds";
   // create a client to mongodb
 var MongoClient = require('mongodb').MongoClient;
 
+//TODO:  Blog entry on setting up the migration
+//TODD:  Blog entry about how to refactor this code.
 module.exports.up = next => {
  
   // make client connect to mongo service
-  MongoClient.connect(url, function(err, client) {
-
-    const db = client.db();
-      if (err) throw err;
-      // db pointing to newdb
+  return MongoClient.connect(url)
+    .then(client => {
+      let db = client.db();
       console.log("Switched to "+db.databaseName+" database");
-      // create 'users' collection in newdb database
-      db.createCollection("running-feed", function(err, result) {
-          if (err) throw err;
+      db.createCollection("running-feed");
+      return client;
+    })
+    .then(client => {
+         
           console.log("Collection is created!");
           // close the connection to db when you are done with it
           client.close();
 
-          next();
-      });   
-  });
+          // Gives:   warning : if your migration returns a promise, do not call the done callback
+          //return next();
+    })
+    .catch(err => {
+      console.error(err);
+    });
 
 }
 
