@@ -1,6 +1,5 @@
 const http = require("http");
 const { resolve } = require("path");
-const asyncMiddleware = require("../utils/asyncMiddleware");
 const api_helper = require("../utils/api_helper");
 
 const FEED_HOST = process.env.FEED_HOST || 'localhost';
