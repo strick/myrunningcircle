@@ -24,7 +24,10 @@ module.exports=
             }
         );
 
-        req.pipe(forwardRequest);
+        let x = req.pipe(forwardRequest);
+       // console.log(x);
+        
+        //res.render("feed");
 
     }   
 }

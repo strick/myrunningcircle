@@ -9,14 +9,12 @@ module.exports=
         //res.render("Hello");
         console.log("Get function");
 
-       
-      /*  res.writeHead(200, {
-            "Content-Length": 500,
-            "Content-Type": "html/text",
-        });*/
-        //res.send("TET");
-        //res.send();
-        //res.write(JSON.stringify(runs));
-        res.render('get');
+        let runs = [
+            { title:"My daily run", distance: "5" },
+            { title:"My weekly run", distance: "10" },
+            { title:"My monthly run", distance: "23" }
+          ];
+          res.setHeader('Content-Type', 'application/json');
+          res.send(JSON.stringify(runs));
     }
 } 
