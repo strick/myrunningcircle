@@ -10,7 +10,8 @@ var MongoClient = require('mongodb').MongoClient;
 module.exports.up = next => {
  
   // make client connect to mongo service
-  return MongoClient.connect(url)
+  return MongoClient.connect(url,
+    {useNewUrlParser: true, useUnifiedTopology: true})
     .then(client => {
       
       let db = client.db();
@@ -38,7 +39,8 @@ module.exports.up = next => {
 module.exports.down = next => {
 
   // make client connect to mongo service
-  return MongoClient.connect(url)
+  return MongoClient.connect(url,
+    {useNewUrlParser: true, useUnifiedTopology: true})
     .then(client => {
       
       let db = client.db();
