@@ -6,7 +6,7 @@ services:
         container_name: db
 
         ports:
-            - "4000:27017"
+            - "4002:27017"
         restart: always
 
     web:
@@ -16,9 +16,11 @@ services:
             dockerfile: Dockerfile
         container_name: web
         ports:
-            - "3001:80"    
+            - "4000:80"    
         environment:
             - PORT=80
+            - FEED_HOST=feed-reader
+            - FEED_PORT=4001
         restart: "no"
 
     feed-reader:
@@ -28,7 +30,7 @@ services:
             dockerfile: Dockerfile
         container_name: feed-reader
         ports:
-            - "3000:80"    
+            - "4001:80"    
         environment:
             - PORT=80
             - DBHOST=mongodb://db:27017
