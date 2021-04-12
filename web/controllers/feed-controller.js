@@ -1,13 +1,14 @@
 const http = require("http");
 
-const FEED_HOST = process.env.FEED_HOST;
-const FEED_PORT = parseInt(process.env.FEED_PORT);
+const FEED_HOST = process.env.FEED_HOST || 'localhost';
+const FEED_PORT = parseInt(process.env.FEED_PORT) || 3000;
 
 module.exports=
 {
    
     feed:function(req, res) {
         console.log("In Feed");
+
         //res.render('feed');
 
         // Forward the request to the feed-reader to get the content
@@ -20,12 +21,13 @@ module.exports=
                 headers: req.headers
             },
             forwardResponse => {
-                res.writeHeaser(forwardResponse.statusCode, forwardResponse.headers);
+                res.writeHeader(forwardResponse.statusCode, forwardResponse.headers);
                 res.forwardResponse.pipe(res);
             }
         );
 
-        forwardRequest.pipe(forwardRequest);
+        
+        req.pipe(forwardRequest);
 
     }   
 }
