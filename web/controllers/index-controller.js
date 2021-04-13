@@ -28,6 +28,8 @@ module.exports=
             let auth_token = response.data.access_token;
             req.session.auth_token_s = auth_token;
             console.log(req.session.auth_token_s);
+
+            res.redirect("/feed");
         })
         .catch(function(error) {
             console.error(error);

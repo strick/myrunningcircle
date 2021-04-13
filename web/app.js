@@ -4,8 +4,6 @@ var app = express();
 const dotenv = require('dotenv');
 const { v4: uuidv4 } = require('uuid');
 dotenv.config(); 
-
-
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
