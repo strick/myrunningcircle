@@ -1,5 +1,6 @@
 //const request = require('request');
 const https = require('https');
+const axios = require('axios')
 
 module.exports=
 {
@@ -18,9 +19,22 @@ module.exports=
             client_id: process.env.STRAVA_CLIENT_ID,
             client_secret: process.env.STRAVA_CLIENT_SECRET,
             code: req.query.code,
+            grant_type: "authorization_code"
         };
 
-        console.log(strava_params);
+        //console.log(strava_params);
+
+        axios.post("https://www.strava.com/oauth/token?",
+            strava_params,
+        )
+        .then(function(response){
+            console.log(response.data.access_token);
+        })
+        .catch(function(error) {
+            console.error(error);
+        });
+
+    
 
       /*  res.send({
             client_id: process.env.STRAVA_CLIENT_ID,
