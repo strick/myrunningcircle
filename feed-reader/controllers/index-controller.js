@@ -14,12 +14,7 @@ module.exports=
     get:function(req, res) {
         //res.render("Hello");
        api_helper.make_API_call("http://" + STRAVA_CONNECTOR_HOST + ":" + STRAVA_CONNECTOR_PORT + "/").then(response => {
-        res.json({runs: response});
-
-        console.log(response);
-       //  res.render("feed", {              
-        //    runs: response
-        // })
+            res.json({runs: response});
         })
         .catch(error => {
             res.send(error);
