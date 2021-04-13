@@ -11,9 +11,7 @@ module.exports=
     },
 
     auth:function(req, res) {
-      
-      //  console.log("RF");
-     //   console.log(req);
+
         const strava_params = {
             client_id: process.env.STRAVA_CLIENT_ID,
             client_secret: process.env.STRAVA_CLIENT_SECRET,
@@ -27,7 +25,7 @@ module.exports=
         .then(function(response){
             let auth_token = response.data.access_token;
             req.session.auth_token_s = auth_token;
-            console.log(req.session.auth_token_s);
+            //console.log(req.session.auth_token_s);
 
             res.redirect("/feed");
         })
