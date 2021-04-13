@@ -4,13 +4,15 @@ module.exports=
   
         //https://www.strava.com/api/v3/activities/{id}?include_all_efforts=" "Authorization: Bearer [[token]
 
+        const code = req.query.code;
         console.log(process.env.STRAVA_TOKEN);
+        
 
         const strava = require('strava-v3')
         
         var f = function (args, done) {
             var endpoint = 'activities'
-            console.log("HHHH");
+            console.log("CODE is: " + code);
             return strava.activities._listHelper(endpoint, args, done)
           }
 
@@ -20,6 +22,7 @@ module.exports=
             "access_token"  : "77fd9cd813e01bcff56fe90feae7732a5c5e52f3",
             "client_id"     : process.env.STRAVA_CLIENT_ID,
             "client_secret" : process.env.STRAVA_CLIENT_SECRET,
+            "code" : code
         
           },function(err,payload,limits) {
             if(!err) {

@@ -1,6 +1,8 @@
 const express = require('express');
 const ejs = require('ejs');
 var app = express();
+const dotenv = require('dotenv');
+dotenv.config();
 
 const port = process.env.PORT || 3001;
 
