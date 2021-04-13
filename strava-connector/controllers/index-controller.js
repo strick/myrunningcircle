@@ -11,27 +11,25 @@ module.exports=
         const strava = require('strava-v3')
 
         strava.athlete.listActivities({
-            "access_token"  : req.query.access_token
+            "access_token"  : req.params.auth_token
         
           },function(err,payload,limits) {
             if(!err) {
                 console.log(payload);
+
+                res.setHeader('Content-Type', 'application/json');
+                res.send(JSON.stringify(payload));
+          
             }
             else {
                 console.log(err);
+                res.setHeader('Content-Type', 'application/json');
+                res.send(JSON.stringify(err));
+          
             }
         });
 
-
-
-        let runs = [
-            { title:"Strava: daily run", distance: "5" },
-            { title:"Strava: weekly run", distance: "10" },
-            { title:"Strava: monthly run", distance: "23" }
-          ];
-          res.setHeader('Content-Type', 'application/json');
-          res.send(JSON.stringify(runs));
-          
+        
 
     }   
 }
