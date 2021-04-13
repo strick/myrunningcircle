@@ -13,6 +13,14 @@ module.exports=
 
     auth:function(req, res) {
         console.log("HELL");
+        
+        const strava_params = {
+            client_id: process.env.STRAVA_CLIENT_ID,
+            client_secret: process.env.STRAVA_CLIENT_SECRET,
+            code: req.query.code,
+        };
+
+        console.log(strava_params);
 
       /*  res.send({
             client_id: process.env.STRAVA_CLIENT_ID,
