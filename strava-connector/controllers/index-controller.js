@@ -5,13 +5,13 @@ module.exports=
         //https://www.strava.com/api/v3/activities/{id}?include_all_efforts=" "Authorization: Bearer [[token]
 
         console.log(process.env.STRAVA_TOKEN);
-/*
+
         var StravaApiV3 = require('strava_api_v3');
         var defaultClient = StravaApiV3.ApiClient.instance;
 
         // Configure OAuth2 access token for authorization: strava_oauth
         var strava_oauth = defaultClient.authentications['strava_oauth'];
-        strava_oauth.accessToken = "YOUR ACCESS TOKEN"
+        strava_oauth.accessToken = process.env.STRAVA_TOKEN;
 
         var api = new StravaApiV3.ActivitiesApi()
 
@@ -30,7 +30,7 @@ module.exports=
         }
         };
         api.getLoggedInAthleteActivities(opts, callback);
-*/
+
         let runs = [
             { title:"Strava: daily run", distance: "5" },
             { title:"Strava: weekly run", distance: "10" },
