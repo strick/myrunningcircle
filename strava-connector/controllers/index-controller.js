@@ -9,20 +9,9 @@ module.exports=
         
 
         const strava = require('strava-v3')
-        
-        var f = function (args, done) {
-            var endpoint = 'activities'
-            console.log("CODE is: " + code);
-            return strava.activities._listHelper(endpoint, args, done)
-          }
 
-
-        //f({
         strava.athlete.listActivities({
-            "access_token"  : "77fd9cd813e01bcff56fe90feae7732a5c5e52f3",
-            "client_id"     : process.env.STRAVA_CLIENT_ID,
-            "client_secret" : process.env.STRAVA_CLIENT_SECRET,
-            "code" : code
+            "access_token"  : req.query.access_token
         
           },function(err,payload,limits) {
             if(!err) {
