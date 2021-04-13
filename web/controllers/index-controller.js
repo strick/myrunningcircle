@@ -1,7 +1,8 @@
 module.exports=
 {
     index:function(req, res) {
-        res.render('index');
+        
+        res.redirect("https://www.strava.com/oauth/authorize");
 
     }   
 }
