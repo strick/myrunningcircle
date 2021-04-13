@@ -1,35 +1,36 @@
 module.exports=
 {
     index:function(req, res) {
-        
+  
         //https://www.strava.com/api/v3/activities/{id}?include_all_efforts=" "Authorization: Bearer [[token]
 
         console.log(process.env.STRAVA_TOKEN);
 
-        var StravaApiV3 = require('strava_api_v3');
-        var defaultClient = StravaApiV3.ApiClient.instance;
+        const strava = require('strava-v3')
+        
+        var f = function (args, done) {
+            var endpoint = 'activities'
+            console.log("HHHH");
+            return strava.activities._listHelper(endpoint, args, done)
+          }
 
-        // Configure OAuth2 access token for authorization: strava_oauth
-        var strava_oauth = defaultClient.authentications['strava_oauth'];
-        strava_oauth.accessToken = process.env.STRAVA_TOKEN;
 
-        var api = new StravaApiV3.ActivitiesApi()
+        //f({
+        strava.athlete.listActivities({
+            "access_token"  : "77fd9cd813e01bcff56fe90feae7732a5c5e52f3",
+            "client_id"     : process.env.STRAVA_CLIENT_ID,
+            "client_secret" : process.env.STRAVA_CLIENT_SECRET,
+        
+          },function(err,payload,limits) {
+            if(!err) {
+                console.log(payload);
+            }
+            else {
+                console.log(err);
+            }
+        });
 
-        var opts = { 
-        'before': 56, // {Integer} An epoch timestamp to use for filtering activities that have taken place before a certain time.
-        'after': 56, // {Integer} An epoch timestamp to use for filtering activities that have taken place after a certain time.
-        'page': 56, // {Integer} Page number. Defaults to 1.
-        'perPage': 56 // {Integer} Number of items per page. Defaults to 30.
-        };
 
-        var callback = function(error, data, response) {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log('API called successfully. Returned data: ' + data);
-        }
-        };
-        api.getLoggedInAthleteActivities(opts, callback);
 
         let runs = [
             { title:"Strava: daily run", distance: "5" },
