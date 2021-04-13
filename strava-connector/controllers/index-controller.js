@@ -11,7 +11,7 @@ module.exports=
         const strava = require('strava-v3')
 
         strava.athlete.listActivities({
-            "access_token"  : req.params.auth_token
+            "access_token"  : req.params.access_token
         
           },function(err,payload,limits) {
             if(!err) {

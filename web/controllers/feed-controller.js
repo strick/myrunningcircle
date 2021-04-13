@@ -9,7 +9,7 @@ module.exports=
 {
    
     feed:function(req, res) {
-        console.log("http://" + FEED_HOST + ":" + FEED_PORT + "/get/" + req.session.auth_token_s)
+
         api_helper.make_API_call("http://" + FEED_HOST + ":" + FEED_PORT + "/get/" + req.session.auth_token_s).then(response => {
             res.render("feed", response);
         })
