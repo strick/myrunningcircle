@@ -4,6 +4,9 @@ var app = express();
 const dotenv = require('dotenv');
 dotenv.config();
 
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+
 const port = process.env.PORT || 3001;
 
 app.set('view engine', 'ejs');
