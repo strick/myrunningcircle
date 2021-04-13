@@ -12,9 +12,8 @@ module.exports=
     },
     
     get:function(req, res) {
-        console.log("HELLO");
-        console.log("I GOT: " + req.query.access_token);
-       api_helper.make_API_call("http://" + STRAVA_CONNECTOR_HOST + ":" + STRAVA_CONNECTOR_PORT + "/" + req.query.access_token).then(response => {
+
+       api_helper.make_API_call("http://" + STRAVA_CONNECTOR_HOST + ":" + STRAVA_CONNECTOR_PORT + "/" + req.params.auth_token).then(response => {
             res.json({runs: response});
         })
         .catch(error => {
