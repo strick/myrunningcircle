@@ -1,6 +1,5 @@
 const http = require("http");
 const { resolve } = require("path");
-const asyncMiddleware = require("../utils/asyncMiddleware");
 const api_helper = require("../utils/api_helper");
 
 const FEED_HOST = process.env.FEED_HOST || 'localhost';
@@ -11,12 +10,8 @@ module.exports=
    
     feed:function(req, res) {
         
-        //console.log(FEED_HOST + ":" + FEED_PORT + "/get");
         api_helper.make_API_call("http://" + FEED_HOST + ":" + FEED_PORT + "/get").then(response => {
-            //res.json(response);
-            res.render("feed", {              
-                runs: response
-            })
+            res.render("feed", response);
         })
         .catch(error => {
             res.send(error);

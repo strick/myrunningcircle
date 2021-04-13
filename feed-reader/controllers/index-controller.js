@@ -1,3 +1,9 @@
+const api_helper = require("../utils/api_helper");
+
+
+const STRAVA_CONNECTOR_HOST = process.env.STRAVA_CONNECTOR_HOST;
+const STRAVA_CONNECTOR_PORT = parseInt(process.env.STRAVA_CONNECTOR_PORT);
+
 module.exports=
 {
     index:function(req, res) {
@@ -7,14 +13,16 @@ module.exports=
     
     get:function(req, res) {
         //res.render("Hello");
-        console.log("Get function");
+       api_helper.make_API_call("http://" + STRAVA_CONNECTOR_HOST + ":" + STRAVA_CONNECTOR_PORT + "/").then(response => {
+        res.json({runs: response});
 
-        let runs = [
-            { title:"My daily run", distance: "5" },
-            { title:"My weekly run", distance: "10" },
-            { title:"My monthly run", distance: "23" }
-          ];
-          res.setHeader('Content-Type', 'application/json');
-          res.send(JSON.stringify(runs));
+        console.log(response);
+       //  res.render("feed", {              
+        //    runs: response
+        // })
+        })
+        .catch(error => {
+            res.send(error);
+        });
     }
 } 

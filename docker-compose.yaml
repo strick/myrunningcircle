@@ -42,7 +42,26 @@ services:
             - PORT=80
             - DBHOST=mongodb://db:27017
             - DBNAME=feeds
+            - STRAVA_CONNECTOR_HOST=strava-connector
+            - STRAVA_CONNECTOR_PORT=80
             - NODE_ENV=development
         depends_on:
             - db
+            - strava-connector
+        restart: "no"
+    
+    strava-connector:
+        image: strava-connector
+        build:
+            context: ./strava-connector
+            dockerfile: Dockerfile-dev
+        container_name: strava-connector
+        volumes:
+            - /tmp/strava-connector/npm-cache:/root/.npm:z
+            - ./strava-connector:/usr/src/app:z
+        ports:
+            - "4003:80"    
+        environment:
+            - PORT=80
+            - NODE_ENV=development
         restart: "no"
