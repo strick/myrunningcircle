@@ -1,13 +1,10 @@
 module.exports=
 {
     index:function(req, res) {
-  
-        //https://www.strava.com/api/v3/activities/{id}?include_all_efforts=" "Authorization: Bearer [[token]
 
         const code = req.query.code;
         console.log(process.env.STRAVA_TOKEN);
         
-
         const strava = require('strava-v3')
 
         strava.athlete.listActivities({
@@ -28,8 +25,5 @@ module.exports=
           
             }
         });
-
-        
-
     }   
 }
