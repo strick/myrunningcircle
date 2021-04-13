@@ -1,5 +1,3 @@
-//const request = require('request');
-const https = require('https');
 const axios = require('axios')
 
 module.exports=
@@ -33,38 +31,6 @@ module.exports=
         .catch(function(error) {
             console.error(error);
         });
-
-    
-
-      /*  res.send({
-            client_id: process.env.STRAVA_CLIENT_ID,
-            client_secret: process.env.STRAVA_CLIENT_SECRET,
-            code: req.query.code,
-        });
-    
-        const options = {
-            hostname: 'www.strava.com',
-            port: 443,
-            path: '/oauth/token?',
-            method: 'POST'
-        
-        
-        }
-
-        // dd tHE POST DATA!!
-       const dd = https.get(options, res => {
-            console.log(`statusCode: ${res.statusCode}`)
-
-            res.on('data', d => {
-                process.stdout.write(d);
-                ;
-            });
-        });
-
-        dd.on('error', error => {
-            console.error(error)
-     });
-*/
     }
 
 }
