@@ -7,6 +7,30 @@ dotenv.config();
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
+const cookieSession = require('cookie-session')
+
+
+const passport = require('passport');
+require("./passport");
+
+
+app.use(cookieSession({
+    name: 'facebook-auth-session',
+    keys: ['key1', 'key2']
+  }))
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.get('/',(req,res)=>{
+    res.send(`Hello world ${req.user.displayName}`)
+  })
+  app.get('/auth/error', (req, res) => res.send('Unknown Error'))
+  app.get('/auth/facebook',passport.authenticate('facebook'));
+  app.get('/auth/facebook/callback',passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+     res.redirect('/');
+  });
+
+
 const port = process.env.PORT || 3001;
 
 const router = require('./routes/routes.js');
