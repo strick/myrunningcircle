@@ -24,7 +24,7 @@ module.exports.up = next => {
       .then(collection => {
 
         let users = [
-          { fb_user_id: "10112072063160502", fb_user_name: "Brian Strickland" },
+          { fb_user_id: "101120720631605023", fb_user_name: "Brian Strickland" },
           { fb_user_id: "128332322", fb_user_name: "David Dupis" }
         ];
 
