@@ -20,20 +20,20 @@ app.use(cookieSession({
   }))
   app.use(passport.initialize());
   app.use(passport.session());
-  app.get('/',(req,res)=>{
-    res.send(`Hello world ${req.user.displayName}`)
-  })
+
+  
   app.get('/auth/error', (req, res) => res.send('Unknown Error'))
   app.get('/auth/facebook',passport.authenticate('facebook'));
   app.get('/auth/facebook/callback',passport.authenticate('facebook', { failureRedirect: '/login' }),
-  function(req, res) {
-     res.redirect('/');
+    function(req, res) {
+         res.redirect('/');
   });
 
 
 const port = process.env.PORT || 3001;
 
 const router = require('./routes/routes.js');
+
 var sess = {
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -58,7 +58,11 @@ app.set('view engine', 'ejs');
 //app.use(cookieParser());
 
 
-
+app.get('/logout', (req, res) => {
+    req.session = null;
+    req.logout();
+    res.redirect('/');
+  })
 
 
 app.listen(port, () => {
