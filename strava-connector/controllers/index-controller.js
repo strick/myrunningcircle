@@ -13,7 +13,7 @@ module.exports=
         
           },function(err,payload,limits) {
             if(!err) {
-                console.log(payload);
+               // console.log(payload);
 
                 res.setHeader('Content-Type', 'application/json');
                 res.send(JSON.stringify(payload));
