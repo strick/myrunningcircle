@@ -1,6 +1,6 @@
 'use strict'
 
-const config = require('./config');
+const config = require('../config');
 
 var url = `${config.dbhost}/${config.feedTable}`;
   
@@ -21,6 +21,19 @@ module.exports.up = next => {
       console.log("Switched to "+db.databaseName+" database");      
 
       return db.createCollection("running-feed")
+      .then(collection => {
+
+        let runs = [
+          { title:"My daily run", distance: "5", fb_user_id: "10112072063160502", fb_user_name: "Brian Strickland" },
+          { title:"My run", distance: "5", fb_user_id: "128332322", fb_user_name: "David Dupis" },
+          { title:"My dddd run", distance: "5", fb_user_id: "10112072063160502", fb_user_name: "Brian Strickland" },
+          { title:"My 33 run", distance: "5", fb_user_id: "10112072063160502", fb_user_name: "Brian Strickland" },
+          { title:"My weekly run", distance: "10", fb_user_id: "128332322", fb_user_name: "David Dupis" },
+          { title:"My monthly run", distance: "23", fb_user_id: "128332322", fb_user_name: "David Dupis" }
+        ];
+
+        return db.collection("running-feed").insertMany(runs);
+      })
       .then(() => {
          
         console.log("Collection is created!");
