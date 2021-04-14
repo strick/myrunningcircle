@@ -8,7 +8,8 @@ module.exports=
         const strava = require('strava-v3')
 
         strava.athlete.listActivities({
-            "access_token"  : req.params.access_token
+            "access_token"  : req.params.access_token,
+            "per_page" : 100
         
           },function(err,payload,limits) {
             if(!err) {
