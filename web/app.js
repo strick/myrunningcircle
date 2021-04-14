@@ -57,14 +57,6 @@ app.use(router);
 app.set('view engine', 'ejs');
 //app.use(cookieParser());
 
-
-app.get('/logout', (req, res) => {
-    req.session = null;
-    req.logout();
-    res.redirect('/');
-  })
-
-
 app.listen(port, () => {
     console.log(`Microservice listening on port ${port}, point your browser at http://localhost:${port}`);
 }); 
