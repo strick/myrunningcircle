@@ -22,14 +22,6 @@ app.use(cookieSession({
   app.use(passport.session());
 
   
-  app.get('/auth/error', (req, res) => res.send('Unknown Error'))
-  app.get('/auth/facebook',passport.authenticate('facebook'));
-  app.get('/auth/facebook/callback',passport.authenticate('facebook', { failureRedirect: '/login' }),
-    function(req, res) {
-         res.redirect('/');
-  });
-
-
 const port = process.env.PORT || 3001;
 
 const router = require('./routes/routes.js');
