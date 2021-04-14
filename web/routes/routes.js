@@ -6,7 +6,7 @@ var router = express.Router();
 const isLoggedIn = require('../middleware/auth')
 const passport = require('passport');
 
-router.get('/', isLoggedIn, indexController.index);
+router.get('/', indexController.index);
 
 router.get('/logout', authController.logout);
 
