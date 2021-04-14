@@ -17,7 +17,7 @@ router.get('/auth/facebook/callback',passport.authenticate('facebook', { failure
        res.redirect('/');
 });
 
-router.get('/auth/strava', indexController.auth);
-router.get('/strava-feed', feedController.stravaFeed );
+router.get('/auth/strava', isLoggedIn, indexController.auth);
+router.get('/strava-feed', isLoggedIn, feedController.stravaFeed );
 
 module.exports = router;
