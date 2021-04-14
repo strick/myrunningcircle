@@ -5,6 +5,6 @@ var router = express.Router();
 
 router.get('/', indexController.index );
 router.get('/auth/strava', indexController.auth);
-router.get('/feed', feedController.feed );
+router.get('/strava-feed', feedController.stravaFeed );
 
 module.exports = router;
