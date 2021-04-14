@@ -3,7 +3,7 @@ const axios = require('axios');
 module.exports=
 {
     index:function(req, res) {
-
+        res.render("index");
     },
 
     auth:function(req, res) {
