@@ -19,16 +19,6 @@ module.exports.up = next => {
       console.log("Switched to "+db.databaseName+" database");      
 
       return db.createCollection("running-feed")
-      .then(collection => {
-
-        let runs = [
-          { title:"My daily run", distance: "5" },
-          { title:"My weekly run", distance: "10" },
-          { title:"My monthly run", distance: "23" }
-        ];
-
-        return db.collection("running-feed").insertMany(runs);
-      })
       .then(() => {
          
         console.log("Collection is created!");
