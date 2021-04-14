@@ -1,6 +1,8 @@
 'use strict'
 
-var url = "mongodb://localhost:4000/feeds";
+
+
+var url = "mongodb://localhost:4002/feeds";
   
   // create a client to mongodb
 var MongoClient = require('mongodb').MongoClient;
