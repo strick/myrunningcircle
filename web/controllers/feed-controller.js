@@ -14,13 +14,18 @@ module.exports=
     
             res.redirect("https://www.strava.com/oauth/authorize?client_id=" + STRAVA_CLIENT_ID + "&response_type=code&redirect_uri=" + STRAVA_TOKEN_URL);
         }
+        else {
 
-        api_helper.make_API_call("http://" + FEED_HOST + ":" + FEED_PORT + "/get/" + req.session.auth_token_s).then(response => {
-            res.render("feed", response);
-        })
-        .catch(error => {
-            res.send(error);
-        });
+            api_helper.make_API_call("http://" + FEED_HOST + ":" + FEED_PORT + "/get/" + req.session.auth_token_s).then(response => {
+                return response;
+            })
+            .then(response => {
+                res.render("feed", response);
+            })
+            .catch(error => {
+                res.send(error);
+            });
+        }
         
     }
 }
