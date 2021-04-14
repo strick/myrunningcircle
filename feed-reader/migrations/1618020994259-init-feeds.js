@@ -1,8 +1,11 @@
 'use strict'
 
+const dotenv = require('dotenv');
+dotenv.config(); 
 
+const DBHOST = process.env.MONGODB_HOST;
 
-var url = "mongodb://localhost:4002/feeds";
+var url = `${DBHOST}/feeds`;
   
   // create a client to mongodb
 var MongoClient = require('mongodb').MongoClient;
