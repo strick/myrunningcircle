@@ -2,7 +2,7 @@
 
 const config = require('./config');
 
-var url = `${config.dbhost()}/feeds`;
+var url = `${config.dbhost}/${config.feedTable}`;
   
   // create a client to mongodb
 var MongoClient = require('mongodb').MongoClient;
