@@ -7,9 +7,25 @@ dotenv.config();
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
+const cookieSession = require('cookie-session')
+
+
+const passport = require('passport');
+require("./passport");
+
+
+app.use(cookieSession({
+    name: 'facebook-auth-session',
+    keys: ['key1', 'key2']
+  }))
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  
 const port = process.env.PORT || 3001;
 
 const router = require('./routes/routes.js');
+
 var sess = {
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -32,10 +48,6 @@ app.use(router);
 
 app.set('view engine', 'ejs');
 //app.use(cookieParser());
-
-
-
-
 
 app.listen(port, () => {
     console.log(`Microservice listening on port ${port}, point your browser at http://localhost:${port}`);

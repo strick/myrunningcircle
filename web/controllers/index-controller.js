@@ -3,12 +3,7 @@ const axios = require('axios');
 module.exports=
 {
     index:function(req, res) {
-
-        const STRAVA_CLIENT_ID = process.env.STRAVA_CLIENT_ID;
-        const STRAVA_TOKEN_URL = process.env.STRAVA_TOKEN_URL;
-
-        res.redirect("https://www.strava.com/oauth/authorize?client_id=" + STRAVA_CLIENT_ID + "&response_type=code&redirect_uri=" + STRAVA_TOKEN_URL);
-
+        res.render("index");
     },
 
     auth:function(req, res) {
@@ -28,7 +23,7 @@ module.exports=
             req.session.auth_token_s = auth_token;
             //console.log(req.session.auth_token_s);
 
-            res.redirect("/feed");
+            res.redirect("/strava-feed");
         })
         .catch(function(error) {
             console.error(error);
