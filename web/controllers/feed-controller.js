@@ -41,6 +41,10 @@ module.exports=
                         //return db.collection("strava-feed").insertMany(response.runs);
                         // The idea is to get the entire feed list back from a vendor, update recoreds that exist and insert hte ones that dont.
                         return Promise.all((response.runs).map(function(run) {
+
+                            // Attach the user name to the record.
+                            run.fb_user_id = req.user.id;
+                            run.fb_user_name = req.user.displayName;
                             return db.collection("strava-feed").updateOne({external_id:run.external_id}, {$set:run}, {upsert:true})
                         }));
                     })
