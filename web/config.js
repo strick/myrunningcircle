@@ -1,11 +1,13 @@
-const dotenv = require('dotenv');
-dotenv.config(); 
+if(process.env.MONGODB_HOST == undefined){
+    const dotenv = require('dotenv');
+    dotenv.config(); 
+}
 
 module.exports = {
 
-    dbhost: process.env.MONGODB_HOST,
+    dbhost: process.env.DBHOST,
 
-    dbname: process.env.MONGODB_NAME,
+    dbname: process.env.DBNAME,
 
     feedTable: "runnning-feed",
 

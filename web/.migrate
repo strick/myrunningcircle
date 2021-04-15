@@ -1,9 +1,9 @@
 {
-  "lastRun": null,
+  "lastRun": "1618442222277-init-users.js",
   "migrations": [
     {
       "title": "1618442222277-init-users.js",
-      "timestamp": null
+      "timestamp": 1618444941929
     }
   ]
 }
