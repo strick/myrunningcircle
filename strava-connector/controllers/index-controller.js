@@ -9,7 +9,7 @@ module.exports=
 
         strava.athlete.listActivities({
             "access_token"  : req.params.access_token,
-            "per_page" : 100
+            "per_page" : 1
         
           },function(err,payload,limits) {
             if(!err) {
