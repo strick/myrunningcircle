@@ -18,8 +18,11 @@ router.get('/auth/facebook/callback',passport.authenticate('facebook', { failure
        res.redirect('/profile');
 });
 
+// Feed
+router.get('/feed/sync', isLoggedIn, feedController.sync);
+router.get('/feed/show', isLoggedIn, feedController.show);
+
 router.get('/auth/strava', isLoggedIn, indexController.auth);
-router.get('/strava-feed', isLoggedIn, feedController.stravaFeed );
 
 router.get('/profile', isLoggedIn, indexController.profile);
 

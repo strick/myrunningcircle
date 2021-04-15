@@ -5,7 +5,11 @@ const FEED_PORT = parseInt(process.env.FEED_PORT) || 3000;
 
 module.exports=
 {
-    stravaFeed:function(req, res) {
+    sync:function(req, res) {
+        res.send("Hellow Sync");
+    },
+
+    show:function(req, res) {
 
         if(req.session.auth_token_s == undefined){
             
