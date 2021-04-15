@@ -38,7 +38,11 @@ module.exports=
                       let db = client.db();
                       console.log(response.runs);
                 
-                        return db.collection("strava-feed").insertMany(response.runs);
+                        //return db.collection("strava-feed").insertMany(response.runs);
+                        // The idea is to get the entire feed list back from a vendor, update recoreds that exist and insert hte ones that dont.
+                        return Promise.all((response.runs).map(function(run) {
+                            return db.collection("strava-feed").updateOne({external_id:run.external_id}, {$set:run}, {upsert:true})
+                        }));
                     })
                     .then(() =>{
                         console.log("added  is created!");
