@@ -36,7 +36,7 @@ module.exports.up = next => {
             { title:"My monthly run", distance: "23", fb_user_id: "128332322", fb_user_name: "David Dupis", external_id: "21238c79-976b-4e1e-b3ce-a2c59764086d" }
           ];
 
-          return db.collection("strava-feed").insertMany(runs);
+          return db.collection("strava-feed").updateMany({external_id}, runs);
         })
       .then(() => {
          
