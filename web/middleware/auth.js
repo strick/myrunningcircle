@@ -10,12 +10,6 @@ const isLoggedIn = (req, res, next) => {
   if (req.user) {
 
     // Restrict this to only users that have signed up for the application
-    //if(db.userExists(req.user.id)){
-    //   next();
-    //
-    //else {
-//      res.status(401).send('Not authorized: <a href="/auth/facebook">Login</a>');
-    //}
     console.log(url);
     MongoClient.connect(url,
       {useNewUrlParser: true, useUnifiedTopology: true})
