@@ -1,9 +1,13 @@
 {
-  "lastRun": "1618442222277-init-users.js",
+  "lastRun": "1618449257514-init-strava-feed.js",
   "migrations": [
     {
       "title": "1618442222277-init-users.js",
-      "timestamp": 1618444941929
+      "timestamp": 1618449557855
+    },
+    {
+      "title": "1618449257514-init-strava-feed.js",
+      "timestamp": 1618449557891
     }
   ]
 }
