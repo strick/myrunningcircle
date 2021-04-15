@@ -3,10 +3,10 @@ const indexController = require('../controllers/index-controller');
 const feedController = require('../controllers/feed-controller');
 const authController = require('../controllers/auth-controller');
 var router = express.Router();
-const isLoggedIn = require('../middleware/auth')
+const isLoggedIn = require('../middleware/auth');
 const passport = require('passport');
 
-router.get('/', indexController.index);
+router.get('/', isLoggedIn, indexController.index);
 
 router.get('/logout', authController.logout);
 

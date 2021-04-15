@@ -7,16 +7,19 @@ var url = `${config.dbhost}/${config.dbname}`;
 
 const isLoggedIn = (req, res, next) => {
 
-  if (req.user) {
+  if(req.originalUrl == "/" && req.user){
+    res.redirect("/profile");
+  }
+  else if (req.user) {
 
     // Restrict this to only users that have signed up for the application
-    console.log(url);
+    //console.log(url);
     MongoClient.connect(url,
       {useNewUrlParser: true, useUnifiedTopology: true})
       .then(client => {
       
           let db = client.db();
-        console.log("looking");
+
           var query  = {fb_user_id: req.user.id };
           
           return db.collection("users").find(query).toArray(function(err, result) {              
