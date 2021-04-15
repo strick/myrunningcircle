@@ -6,10 +6,9 @@ const { v4: uuidv4 } = require('uuid');
 dotenv.config(); 
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-
-const cookieSession = require('cookie-session')
-
-
+const cookieSession = require('cookie-session');
+const port = process.env.PORT || 3001;
+const router = require('./routes/routes.js');
 const passport = require('passport');
 require("./passport");
 
@@ -20,11 +19,6 @@ app.use(cookieSession({
   }))
   app.use(passport.initialize());
   app.use(passport.session());
-
-  
-const port = process.env.PORT || 3001;
-
-const router = require('./routes/routes.js');
 
 var sess = {
     secret: process.env.SESSION_SECRET,
@@ -43,11 +37,10 @@ if (app.get('env') === 'production') {
 
   
 app.use(session(sess));
-
 app.use(router);
-
 app.set('view engine', 'ejs');
-//app.use(cookieParser());
+app.use(express.static('public'))
+
 
 app.listen(port, () => {
     console.log(`Microservice listening on port ${port}, point your browser at http://localhost:${port}`);
