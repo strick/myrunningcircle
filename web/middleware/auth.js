@@ -24,7 +24,8 @@ const isLoggedIn = (req, res, next) => {
 
               if(result.length == 0)
                   res.status(401).send('Not Authorized: <a href="/auth/facebook">Login</a>');
-              next();
+              else     
+                next();
             });
       })
       .catch(err => {

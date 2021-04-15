@@ -12,7 +12,7 @@ module.exports=
     },
     
     get:function(req, res) {
-
+        console.log("GET");
        api_helper.make_API_call("http://" + STRAVA_CONNECTOR_HOST + ":" + STRAVA_CONNECTOR_PORT + "/" + req.params.access_token).then(response => {
             res.json({runs: response});
         })
