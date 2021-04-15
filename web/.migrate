@@ -3,11 +3,11 @@
   "migrations": [
     {
       "title": "1618442222277-init-users.js",
-      "timestamp": 1618449557855
+      "timestamp": 1618450354394
     },
     {
       "title": "1618449257514-init-strava-feed.js",
-      "timestamp": 1618449557891
+      "timestamp": 1618450354428
     }
   ]
 }

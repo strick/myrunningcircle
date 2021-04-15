@@ -15,10 +15,12 @@ router.get('/auth/error', (req, res) => res.send('Unknown Error'))
 router.get('/auth/facebook',passport.authenticate('facebook'));
 router.get('/auth/facebook/callback',passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
-       res.redirect('/');
+       res.redirect('/profile');
 });
 
 router.get('/auth/strava', isLoggedIn, indexController.auth);
 router.get('/strava-feed', isLoggedIn, feedController.stravaFeed );
+
+router.get('/profile', isLoggedIn, indexController.profile);
 
 module.exports = router;
