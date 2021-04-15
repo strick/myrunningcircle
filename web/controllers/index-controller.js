@@ -1,5 +1,3 @@
-const { restart } = require('nodemon');
-
 module.exports=
 {
     index:function(req, res) {
