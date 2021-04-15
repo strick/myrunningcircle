@@ -22,7 +22,7 @@ router.get('/auth/facebook/callback',passport.authenticate('facebook', { failure
 router.get('/feed/sync', isLoggedIn, feedController.sync);
 router.get('/feed/show', isLoggedIn, feedController.show);
 
-router.get('/auth/strava', isLoggedIn, indexController.auth);
+router.get('/auth/strava', isLoggedIn, authController.strava);
 
 router.get('/profile', isLoggedIn, indexController.profile);
 
