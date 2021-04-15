@@ -36,7 +36,10 @@ module.exports.up = next => {
             { title:"My monthly run", distance: "23", fb_user_id: "128332322", fb_user_name: "David Dupis", external_id: "21238c79-976b-4e1e-b3ce-a2c59764086d" }
           ];
 
-          return db.collection("strava-feed").updateMany({external_id}, runs);
+          // The idea is to get the entire feed list back from a vendor, update recoreds that exist and insert hte ones that dont.
+          return Promise.all(runs.map(function(run) {
+            return db.collection("strava-feed").updateOne({external_id:run.external_id}, {$set:run}, {upsert:true})
+          }));
         })
       .then(() => {
          
