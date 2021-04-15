@@ -10,6 +10,7 @@ router.get('/', indexController.index);
 
 router.get('/logout', authController.logout);
 
+// Facebook Login
 router.get('/auth/error', (req, res) => res.send('Unknown Error'))
 router.get('/auth/facebook',passport.authenticate('facebook'));
 router.get('/auth/facebook/callback',passport.authenticate('facebook', { failureRedirect: '/login' }),

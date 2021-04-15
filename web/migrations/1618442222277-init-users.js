@@ -1,8 +1,6 @@
-'use strict'
-
 const config = require('../config');
 
-var url = `${config.dbhost}/${config.feedTable}`;
+var url = `${config.dbhost}/${config.dbname}`;
   
   // create a client to mongodb
 var MongoClient = require('mongodb').MongoClient;
@@ -20,19 +18,15 @@ module.exports.up = next => {
 
       console.log("Switched to "+db.databaseName+" database");      
 
-      return db.createCollection("running-feed")
+      return db.createCollection("users")
       .then(collection => {
 
-        let runs = [
-          { title:"My daily run", distance: "5", fb_user_id: "10112072063160502", fb_user_name: "Brian Strickland" },
-          { title:"My run", distance: "5", fb_user_id: "128332322", fb_user_name: "David Dupis" },
-          { title:"My dddd run", distance: "5", fb_user_id: "10112072063160502", fb_user_name: "Brian Strickland" },
-          { title:"My 33 run", distance: "5", fb_user_id: "10112072063160502", fb_user_name: "Brian Strickland" },
-          { title:"My weekly run", distance: "10", fb_user_id: "128332322", fb_user_name: "David Dupis" },
-          { title:"My monthly run", distance: "23", fb_user_id: "128332322", fb_user_name: "David Dupis" }
+        let users = [
+          { fb_user_id: "10112072063160502XXX", fb_user_name: "Brian Strickland" },
+          { fb_user_id: "128332322", fb_user_name: "David Dupis" }
         ];
 
-        return db.collection("running-feed").insertMany(runs);
+        return db.collection(config.usersTable).insertMany(users);
       })
       .then(() => {
          
@@ -62,7 +56,7 @@ module.exports.down = next => {
       console.log("Switched to "+db.databaseName+" database");
 
       // create 'users' collection in newdb database
-      return db.dropCollection("running-feed")
+      return db.dropCollection("users")
       .then(() => {
         console.log("Collection is Deleted!");
         client.close();

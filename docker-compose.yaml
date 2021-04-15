@@ -25,6 +25,10 @@ services:
             - FEED_HOST=feed-reader
             - FEED_PORT=80
             - NODE_ENV=development
+            - DBHOST=mongodb://db:27017
+            - DBNAME=myrunningcircle
+        depends_on:
+            - db
         restart: "no"
 
     feed-reader:
@@ -41,7 +45,7 @@ services:
         environment:
             - PORT=80
             - DBHOST=mongodb://db:27017
-            - DBNAME=feeds
+            - DBNAME=myrunningcircle
             - STRAVA_CONNECTOR_HOST=strava-connector
             - STRAVA_CONNECTOR_PORT=80
             - NODE_ENV=development
