@@ -49,7 +49,27 @@ module.exports.up = next => {
 
 }
 
-module.exports.down = next => {
+  module.exports.down = next => {
 
+    return MongoClient.connect(url,
+      {useNewUrlParser: true, useUnifiedTopology: true})
+      .then(client => {
+        
+        let db = client.db();
+  
+        // db pointing to newdb
+        console.log("Switched to "+db.databaseName+" database");
+  
+        // create 'users' collection in newdb database
+        return db.dropCollection("strava-feed")
+        .then(() => {
+          console.log("Collection is Deleted!");
+          client.close();
+        });
+  s            
+      })
+      .catch(err => {
+        console.error(err);
+      });
  
 }
