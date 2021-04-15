@@ -29,8 +29,6 @@ module.exports=
             })
             .then(response => {
 
-                console.log("done");
-               // console.log(response);
                 return MongoClient.connect(url,
                     {useNewUrlParser: true, useUnifiedTopology: true})
                     .then(client => {

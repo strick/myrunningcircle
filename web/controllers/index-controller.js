@@ -30,7 +30,7 @@ module.exports=
             req.session.auth_token_s = auth_token;
             //console.log(req.session.auth_token_s);
 
-            res.redirect("/strava-feed");
+            res.redirect("/feed/show");
         })
         .catch(function(error) {
             console.error(error);
