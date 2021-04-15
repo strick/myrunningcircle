@@ -52,11 +52,12 @@ module.exports=
       
                     });
 
-                //res.render("feed", response);
             })
             .catch(error => {
                 res.send(error);
             });
+
+            res.redirect("/feed/show");
         }
 
 
