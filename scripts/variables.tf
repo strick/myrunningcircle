@@ -11,9 +11,9 @@ variable admin_username {
 }
 
 variable client_id {
-
+    sensitive = true
 }
 
 variable client_secret {
-
+    sensitive = true
 }
