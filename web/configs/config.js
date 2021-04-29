@@ -1,3 +1,5 @@
+'use strict'
+
 if(process.env.MONGODB_HOST == undefined){
     const dotenv = require('dotenv');
     dotenv.config(); 

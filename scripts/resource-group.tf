@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "myrunningcircle" {
 
-    name = "myrunningcircle"
+    name = var.app_name
 
-    location = "East US"
+    location = var.location
 }
