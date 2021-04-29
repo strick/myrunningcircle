@@ -5,7 +5,6 @@ COPY package*.json ./
 RUN npm install --only=production
 COPY ./app.js ./
 COPY ./passport.js ./
-COPY ./.env ./
 COPY ./configs ./configs
 COPY ./controllers ./controllers
 COPY ./routes ./routes
