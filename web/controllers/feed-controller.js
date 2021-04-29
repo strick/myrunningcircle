@@ -4,7 +4,8 @@ const FEED_HOST = process.env.FEED_HOST || 'localhost';
 const FEED_PORT = parseInt(process.env.FEED_PORT) || 3000;
 
 
-const config = require('../config');
+
+const config = require("../configs/config");
 
 var url = `${config.dbhost}/${config.dbname}`;
   

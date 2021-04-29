@@ -1,7 +1,7 @@
 var db = require("../utils/db");
 var MongoClient = require('mongodb').MongoClient;
 
-const config = require('../config');
+const config = require("../configs/config");
 
 var url = `${config.dbhost}/${config.dbname}`;
 
