@@ -9,8 +9,6 @@ trigger:
 variables:
   Version.MajorMinor: 1.0
   Version.Revision: $[counter(variables['Version.MajorMinor'], 0)
-#  $(VERSION): variables['Version.MajorMinor'].variables['Version.Revision']
-
 
 steps:
 - task: DockerInstaller@0
@@ -24,5 +22,8 @@ steps:
 - task: Bash@3
   displayName: 'Bash Script'
   inputs:
+    script: |
+      export VERSION=variables['Version.MajorMinor'].variables['Version.Revision']
+      echo $VERSION
     targetType: filePath
     filePath: ./scripts/deploy.sh
