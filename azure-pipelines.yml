@@ -9,7 +9,7 @@ trigger:
 variables:
   Version.MajorMinor: 1.0
   Version.Revision: $[counter(variables['Version.MajorMinor'], 0)
-  $VERSION: variables['Version.MajorMinor'].variables['Version.Revision']
+#  $(VERSION): variables['Version.MajorMinor'].variables['Version.Revision']
 
 
 steps:
