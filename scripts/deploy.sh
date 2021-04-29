@@ -13,6 +13,7 @@ cd ./scripts
 export KUBERNETES_SERVICE_HOST="" # Workaround for https://github.com/terraform-providers/terraform-provider-kubernetes/issues/679
 
 echo "APP VERSION: $VERSION"
+echo "ARM: $ARM_CLIENT_ID"
 terraform init 
 terraform apply -auto-approve \
     -var "app_version=$VERSION" \
