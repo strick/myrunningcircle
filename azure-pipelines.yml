@@ -23,9 +23,9 @@ steps:
   displayName: 'Install Terraform'
 - task: Bash@3
   displayName: 'Bash Script'
-  env:
-    FACEBOOK_APP_ID: $(FACEBOOK_APP_ID)
-    FACEBOOK_APP_SECRET: $(FACEBOOK_APP_SECRET)
   inputs:
     targetType: filePath
     filePath: ./scripts/deploy.sh
+  env:
+    FACEBOOK_APP_ID: $(FACEBOOK_APP_ID)
+    FACEBOOK_APP_SECRET: $(FACEBOOK_APP_SECRET)
