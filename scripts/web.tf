@@ -15,7 +15,7 @@ resource "null_resource" "docker_build" {
     }
 
     provisioner "local-exec" {
-        command = "docker build -t ${local.image_tag} --file ../${local.service_name}/Dockerfile-prod ../${local.service_name}"
+        command = "docker build --build-arg FACEBOOK_APP_ID=${var.fb_app_id} --build-arg FACEBOOK_APP_SECRET=${var.fb_app_secret} --build-arg APP_IP=${var.app_ip} -t ${local.image_tag} --file ../${local.service_name}/Dockerfile-prod ../${local.service_name}"
     }
 }
 

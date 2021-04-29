@@ -20,3 +20,14 @@ variable client_id {
 variable client_secret {
     sensitive = true
 }
+
+variable fb_app_id {
+    sensitive = true
+}
+
+variable fb_app_secret {
+    sensitive = true
+}
+
+variable app_ip {
+}
