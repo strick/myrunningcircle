@@ -16,7 +16,11 @@ steps:
 - task: DockerInstaller@0
   inputs:
     dockerVersion: '20.10.5'
+    arguments: |
+      --build-arg FACEBOOK_APP_ID=$(FACEBOOK_APP_ID)
+      --build-arg FACEBOOK_APP_SECRET=$(FACEBOOK_APP_SECRET)
   displayName: 'Install Docker'  
+
 - task: TerraformInstaller@0
   inputs:
     terraformVersion: '0.15.1'
@@ -26,6 +30,4 @@ steps:
   inputs:
     targetType: filePath
     filePath: ./scripts/deploy.sh
-  env:
-    FACEBOOK_APP_ID: $(FACEBOOK_APP_ID)
-    FACEBOOK_APP_SECRET: $(FACEBOOK_APP_SECRET)
+
