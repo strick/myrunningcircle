@@ -19,6 +19,7 @@ steps:
     arguments: |
       --build-arg FACEBOOK_APP_ID=$(FACEBOOK_APP_ID)
       --build-arg FACEBOOK_APP_SECRET=$(FACEBOOK_APP_SECRET)
+      --build-arg APP_IP=$(APP_IP)
   displayName: 'Install Docker'  
 
 - task: TerraformInstaller@0
