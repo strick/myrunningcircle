@@ -22,10 +22,9 @@ steps:
   displayName: 'Install Terraform'
 - task: Bash@3
   displayName: 'Bash Script'
+  env:
+    FACEBOOK_APP_ID: $(FACEBOOK_APP_ID)
+    FACEBOOK_APP_SECRET: $(FACEBOOK_APP_SECRET)
   inputs:
-    script: |
-      echo "This is a test of ${{ variables['Version.MajorMinor'].variables['Version.Revision'] }}"
-      export VERSION=$(variables['Version.MajorMinor'].variables['Version.Revision']
-      echo $VERSION
     targetType: filePath
     filePath: ./scripts/deploy.sh
