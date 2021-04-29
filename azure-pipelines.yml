@@ -7,8 +7,9 @@ trigger:
 - main
 
 variables:
-  Version.MajorMinor: 1.0
-  Version.Revision: $[counter(variables['Version.MajorMinor'], 0)
+  VERSION: 1.0.11
+  #Version.MajorMinor: 1.0
+  #Version.Revision: $[counter(variables['Version.MajorMinor'], 0)
 
 steps:
 - task: DockerInstaller@0
