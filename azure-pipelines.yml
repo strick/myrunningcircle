@@ -26,5 +26,6 @@ steps:
       echo "This is a test of ${{ variables['Version.MajorMinor'].variables['Version.Revision'] }}"
       export VERSION=$(variables['Version.MajorMinor'].variables['Version.Revision']
       echo $VERSION
+      ./scripts/deploy.sh
     #targetType: filePath
     #filePath: ./scripts/deploy.sh
