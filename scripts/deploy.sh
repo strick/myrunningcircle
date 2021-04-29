@@ -20,7 +20,7 @@ echo "terraform apply -auto-approve\"
     -var \"fb_app_id=$FACEBOOK_APP_ID\" 
     -var \"fb_app_secret=$FACEBOOK_APP_SECRET\"
     -var \"app_ip=$APP_IP"
-    
+
 terraform init 
 terraform apply -auto-approve \
     -var "app_version=$VERSION" \
