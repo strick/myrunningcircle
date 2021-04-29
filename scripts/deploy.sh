@@ -3,7 +3,6 @@
 #
 
 set -u # or set -o nounset
-: "$VERSION"
 : "$ARM_CLIENT_ID"
 : "$ARM_CLIENT_SECRET"
 : "$ARM_TENANT_ID"
