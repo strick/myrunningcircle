@@ -13,10 +13,14 @@ variables:
 
 
 steps:
-- task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
-  displayName: 'Install Terraform 0.12.3'
 - task: DockerInstaller@0
-  displayName: 'Install Docker 17.09.0-ce'
+  inputs:
+    dockerVersion: '20.10.5'
+  displayName: 'Install Docker'  
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: '0.15.1'
+  displayName: 'Install Terraform'
 - task: Bash@3
   displayName: 'Bash Script'
   inputs:
