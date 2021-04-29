@@ -9,6 +9,8 @@ trigger:
 variables:
   Version.MajorMinor: 1.0
   Version.Revision: $[counter(variables['Version.MajorMinor'], 0)
+  $VERSION: variables['Version.MajorMinor'].variables['Version.Revision']
+
 
 steps:
 - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
